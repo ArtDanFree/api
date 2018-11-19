@@ -6,30 +6,25 @@ use GuzzleHttp\Client;
 
 class ApiController
 {
-    protected $accessToken;
+    protected $accessToken = 'your-token';
 
-    public function __construct($accessToken)
-    {
-        $this->accessToken = $accessToken;
-    }
 
     public function getCities()
     {
         $http = new Client;
-        $response = $http->request('GET', 'http://management.test/api/cityList', [
+        $response = $http->request('GET', 'http://leads.likedengi.ru/api/cityList', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->accessToken,
             ]
         ]);
-        $cities = json_decode((string)$response->getBody(), true);
-        return $cities;
+        return json_decode((string)$response->getBody(), true);
     }
 
     public function addLead($request)
     {
         $http = new Client;
-        $response = $http->request('POST', 'http://management.test/api/addLead', [
+        $response = $http->request('POST', 'http://leads.likedengi.ru/api/addLead', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->accessToken,
