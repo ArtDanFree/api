@@ -12,7 +12,7 @@ class ApiController
     public function getCities()
     {
         $http = new Client;
-        $response = $http->request('GET', 'http://leads.likedengi.ru/api/cityList', [
+        $response = $http->request('GET', 'https://leads.likedengi.ru/api/cityList', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->accessToken,
@@ -24,7 +24,7 @@ class ApiController
     public function addLead($request)
     {
         $http = new Client;
-        $response = $http->request('POST', 'http://leads.likedengi.ru/api/addLead', [
+        $response = $http->request('POST', 'https://leads.likedengi.ru/api/addLead', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->accessToken,
