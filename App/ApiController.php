@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 
 class ApiController
 {
-    protected $accessToken = 'your-token';
+    protected $accessToken = 'your token';
 
 
     public function getCities()

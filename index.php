@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/autoload.php';
 
 
@@ -18,11 +19,22 @@ if (!empty($_POST))
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
+
 <?php if(!empty($response)):?>
 <div class="container">
+    <?php if (!empty($response['message'])): ?>
     <div class="alert alert-info text-center" role="alert">
         <strong><?php echo $response['message']?></strong>
     </div>
+    <?php else: ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <ul>
+        <?php foreach ($response['errors']['collateral'] as $error): ?>
+        <li><?php echo $error ?></li>
+        <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
 </div>
 <?php endif;?>
 <div class="container">
@@ -31,12 +43,12 @@ if (!empty($_POST))
             <label>Тип залога</label>
             <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="customControlValidation2"
-                       name="collateral" value="0" required>
+                       name="collateral" value="1" required>
                 <label class="custom-control-label" for="customControlValidation2">Недвижимость</label>
             </div>
             <div class="custom-control custom-radio mb-3">
                 <input type="radio" class="custom-control-input" id="customControlValidation3"
-                       name="collateral" value="1" required>
+                       name="collateral" value="2" required>
                 <label class="custom-control-label" for="customControlValidation3">Автомобиль</label>
             </div>
         </div>
